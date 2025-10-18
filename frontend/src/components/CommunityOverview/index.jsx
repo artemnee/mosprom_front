@@ -16,6 +16,8 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       },
     );
     const data = await res.json();
+
+    console.log(data);
     setPr(data.result);
   };
 

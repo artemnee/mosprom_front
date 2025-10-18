@@ -33,13 +33,13 @@ body::after {
   top: 0;
   z-index: -1;
   opacity: 0.1;
-  background-color: #ffad99;
+  background-color: #ff99be;
   background-image:
-    radial-gradient(at 52% 97%, hsla(245, 70%, 62%, 1) 0px, transparent 50%),
-    radial-gradient(at 21% 13%, hsla(293, 80%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 29% 42%, hsla(226, 92%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 77% 8%, hsla(263, 62%, 68%, 1) 0px, transparent 50%),
-    radial-gradient(at 66% 15%, hsla(153, 64%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 6% 86%, hsla(178, 76%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 63% 58%, hsla(14, 85%, 61%, 1) 0px, transparent 50%);
+    radial-gradient(at 85% 42%, hsla(157, 68%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 36% 16%, hsla(83, 86%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 29% 22%, hsla(341, 90%, 71%, 1) 0px, transparent 50%),
+    radial-gradient(at 42% 93%, hsla(351, 96%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 86% 23%, hsla(28, 80%, 69%, 1) 0px, transparent 50%),
+    radial-gradient(at 16% 21%, hsla(225, 97%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 19% 0%, hsla(193, 91%, 63%, 1) 0px, transparent 50%);
 }

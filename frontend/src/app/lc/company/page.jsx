@@ -21,7 +21,11 @@ export default function EnterpriseDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !token) {
+    if (!localStorage.getItem("id")) {
+      router.push("/lc");
+    }
+
+    if (!loading && !token && !localStorage.getItem("id")) {
       router.push("/login");
     }
   }, [loading, token, router]);
@@ -53,6 +57,14 @@ export default function EnterpriseDashboard() {
       />
 
       <div className="flex-1 flex flex-col min-w-0">
+        <div className="md:hidden">
+          <HeaderLc
+            sidebarOpen={sidebarOpen}
+            onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+            activeSection={activeSection}
+            menuItems={menuItems}
+          />
+        </div>
         <main className="flex-1 shadow overflow-y-auto bg-white rounded-xl m-1 md:m-4">
           <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8 ">
             {activeSection === "dashboard" ? (
