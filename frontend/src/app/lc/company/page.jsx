@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import CommunityDetail from "@/components/CommunityDetail";
 import CommunityOverview from "@/components/CommunityOverview";
@@ -14,6 +15,7 @@ export default function EnterpriseDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("dashboard");
   const [selectedCommunity, setSelectedCommunity] = useState(null);
+  const pathname = usePathname();
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
@@ -41,6 +43,7 @@ export default function EnterpriseDashboard() {
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
           activeSection={activeSection}
           menuItems={menuItems}
+          pathname={pathname}
         />
 
         <main className="flex-1 overflow-y-auto md:rounded-tl-xl  bg-gray-100/90">

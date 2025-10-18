@@ -1,4 +1,7 @@
+import { useAuth } from "@/context/authContext";
+
 const SidebarUser = ({ isOpen }) => {
+  const { user } = useAuth();
   return (
     <div className="p-3 border-t border-gray-200">
       <div
@@ -14,9 +17,7 @@ const SidebarUser = ({ isOpen }) => {
             <div className="text-sm font-medium text-gray-900 truncate">
               Админ
             </div>
-            <div className="text-xs text-gray-500 truncate">
-              admin@micron.ru
-            </div>
+            <div className="text-xs text-gray-500 truncate">{user?.email}</div>
           </div>
         )}
       </div>

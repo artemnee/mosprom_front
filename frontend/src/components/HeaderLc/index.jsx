@@ -1,6 +1,6 @@
-const HeaderLc = ({ onToggleSidebar, activeSection, menuItems }) => {
+const HeaderLc = ({ onToggleSidebar, activeSection, menuItems, pathname }) => {
   return (
-    <header className="h-16 bg-white flex items-center px-4 lg:px-6">
+    <header className="h-16 bg-white flex items-center px-4 lg:px-6 ">
       <button
         onClick={onToggleSidebar}
         className="hidden lg:block p-2 hover:bg-gray-100 rounded-lg transition-colors mr-4"

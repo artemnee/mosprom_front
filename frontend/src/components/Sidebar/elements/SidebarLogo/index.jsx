@@ -2,7 +2,7 @@ const SidebarLogo = ({ isOpen }) => {
   return (
     <div className="h-16 flex items-center px-4 ">
       {isOpen ? (
-        <div className="flex items-center gap-3">
+        <a className="flex items-center gap-3" href="/">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
             <svg
               className="w-5 h-5 text-white"
@@ -19,9 +19,9 @@ const SidebarLogo = ({ isOpen }) => {
             </svg>
           </div>
           <span className="text-gray-900 font-semibold text-nowrap">
-            АО «Микрон»
+            MyProfit
           </span>
-        </div>
+        </a>
       ) : (
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mx-auto">
           <svg

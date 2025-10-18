@@ -1,7 +1,8 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "@/context/authContext";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +11,10 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
+
+  const router = useRouter();
+
+  const { login } = useAuth();
   const handleChangeInput = (e, name) => {
     setFormData({
       ...formData,
@@ -17,7 +22,7 @@ const LoginForm = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -30,12 +35,16 @@ const LoginForm = () => {
       return;
     }
 
-    if (
-      formData.password === "qweqwe" &&
-      formData.email === "admin@admin.com"
-    ) {
-      localStorage.setItem("userAuth", "true");
-      redirect("/lc");
+    try {
+      const res = await login(formData);
+
+      console.log(res);
+
+      if (!res.error) {
+        await router.push("/lc/user");
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
