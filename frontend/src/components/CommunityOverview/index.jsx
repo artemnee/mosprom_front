@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalForm from "@/components/ModalForm";
 
 const CommunityOverview = ({ onSelectCommunity }) => {
@@ -42,6 +42,27 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       color: "from-neutral-200 to-emerald-200",
     },
   ];
+
+  const [pr, setPr] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        `http://localhost:3000/api/auth/companies/${localStorage.getItem("id")}/communities`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+
+      setPr(data.result);
+    })();
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
@@ -88,7 +109,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {communities.map((community) => (
+        {pr?.map((community) => (
           <div
             key={community.id}
             onClick={() => onSelectCommunity(community)}

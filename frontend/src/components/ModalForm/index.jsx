@@ -1,13 +1,12 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    title: "",
     description: "",
-    members: "",
-    projects: "",
-    events: "",
-    date: "",
   });
 
   if (!isOpen) return null;
@@ -17,10 +16,24 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     onSubmit(formData);
     onClose();
+
+    const res = await fetch(
+      `http://localhost:3000/api/auth/companies/${localStorage.getItem("id")}/communities`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+        body: JSON.stringify(formData),
+      },
+    );
+
+    console.log(await res.json());
   };
 
   const renderFields = () => {
@@ -30,8 +43,8 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
           <>
             <Input
               label="Название сообщества"
-              name="name"
-              value={formData.name}
+              name="title"
+              value={formData.title}
               onChange={handleChange}
               required
             />
@@ -41,13 +54,6 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
               value={formData.description}
               onChange={handleChange}
               required
-            />
-            <Input
-              label="Количество участников"
-              name="members"
-              type="number"
-              value={formData.members}
-              onChange={handleChange}
             />
           </>
         );

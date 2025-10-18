@@ -1,11 +1,14 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [registrationType, setRegistrationType] = useState("user");
+
+  const router = useRouter();
 
   const [userFormData, setUserFormData] = useState({
     name: "",
@@ -79,12 +82,22 @@ const RegisterForm = () => {
     try {
       const res = await fetch(`http://localhost:3000/api/auth/companies`, {
         method: "POST",
-        mode: "no-cors",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
         body: JSON.stringify(companyFormData),
       });
+
+      console.log(res);
+
+      if (res.ok) {
+        const r = await res.json();
+
+        localStorage.setItem("id", r.id);
+
+        router.push("/lc/company");
+      }
 
       console.log(res);
     } catch (e) {
