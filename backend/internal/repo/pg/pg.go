@@ -56,7 +56,8 @@ func connectDb(databaseDSN string) *gorm.DB {
 
 func (p *PgDb) migrate() error {
 
-	var models = []any{&dao.User{}, &dao.Company{}, &dao.FileAsset{}}
+	var models = []any{
+		&dao.User{}, &dao.Company{}, &dao.Community{}, &dao.FileAsset{}}
 
 	slog.Info("Migrate models without relations")
 	p.db.Config.DisableForeignKeyConstraintWhenMigrating = true

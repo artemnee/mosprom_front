@@ -15,6 +15,11 @@ type Http struct {
 	app        *fiber.App
 	cfg        *config.Config
 	controller *handlers.Controller
+
+	apiGroup       fiber.Router
+	authGroup      fiber.Router
+	companyGroup   fiber.Router
+	communityGroup fiber.Router
 }
 
 func New(bl *bl.Bl) *Http {
@@ -31,16 +36,19 @@ func New(bl *bl.Bl) *Http {
 
 	ctr := handlers.New(*bl)
 
-	api := fib.Group("/api")
-	auth := api.Group("/auth", ctr.AuthMiddleware())
-	auth.Get("/eee/", func(c *fiber.Ctx) error { return nil })
 	app := Http{
 		app:        fib,
 		cfg:        bl.Cfg,
 		controller: ctr}
 
+	app.apiGroup = app.app.Group("/api")
+	app.authGroup = app.apiGroup.Group("/auth", ctr.AuthMiddleware())
+	app.companyGroup = app.authGroup.Group("/companies/:companyId", ctr.CompanyMiddleware())
+	app.communityGroup = app.companyGroup.Group("/communities/:communityId", ctr.CommunityMiddleware())
+
 	app.UserNoAuth()
 	app.Company()
+	app.Community()
 
 	return &app
 }

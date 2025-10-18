@@ -18,7 +18,11 @@ var (
 
 	ErrUnauthorized = Err{Status: http.StatusUnauthorized, Message: "unauthorized"}
 
-	CompanyBadRequest = Err{Status: http.StatusBadRequest, Message: "company bad request"}
+	CompanyNotFound   = Err{Status: http.StatusNotFound, Message: "company not found"}
+	CommunityNotFound = Err{Status: http.StatusNotFound, Message: "community not found"}
+
+	CompanyBadRequest   = Err{Status: http.StatusBadRequest, Message: "company bad request"}
+	CommunityBadRequest = Err{Status: http.StatusBadRequest, Message: "community bad request"}
 
 	DefaultError = Err{Status: http.StatusBadRequest, Message: "some error"}
 )

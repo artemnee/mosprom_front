@@ -22,8 +22,8 @@ func (c *Company) Create(req dto.CompanyReq, author *dao.User) (*dao.Company, er
 		Name:        req.Name,
 		Description: req.Description,
 		LogoId:      uuid.NullUUID{},
-		CreatedById: ToNullUUID(&author.Id),
-		IsActive:    false,
+		CreatedById: author.Id,
+		IsActive:    true, //TODO изменить на false верифицировать суперпользователем
 	}
 
 	cmp, err := c.db.CreateCompany(company)
@@ -38,4 +38,8 @@ func (c *Company) Create(req dto.CompanyReq, author *dao.User) (*dao.Company, er
 func (c *Company) GetList(limit, offset int) dto.PaginationResponse {
 	res, _ := c.db.GetCompanyList(limit, offset)
 	return res
+}
+
+func (c *Company) Get(id uuid.UUID) (*dao.Company, error) {
+	return c.db.GetCompanyById(id)
 }
