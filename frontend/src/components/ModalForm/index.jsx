@@ -17,7 +17,6 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit, setPr }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
     onClose();
 
     const res = await fetch(
@@ -34,6 +33,8 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit, setPr }) => {
     const json = await res.json();
 
     console.log(json);
+
+    onSubmit(formData);
   };
 
   const renderFields = () => {

@@ -1,3 +1,4 @@
+import { Frown } from "lucide-react";
 import { useEffect, useState } from "react";
 import ModalForm from "@/components/ModalForm";
 
@@ -20,6 +21,8 @@ const CommunityOverview = ({ onSelectCommunity }) => {
     console.log(data);
     setPr(data.result);
   };
+
+  console.log(pr.length);
 
   useEffect(() => {
     (async () => {
@@ -86,7 +89,16 @@ const CommunityOverview = ({ onSelectCommunity }) => {
           Создать сообщество
         </button>
       </div>
-
+      {!pr.length && (
+        <div className="flex h-[300px] justify-center items-end relative font-bold">
+          <div className="opacity-20 flex h-max text-center">
+            Тут пусто... Сообществ нет... Может ну его?
+          </div>
+          <div className="absolute top-0 opacity-20">
+            <Frown size={256} />
+          </div>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pr?.map((community, i) => (
           <div
