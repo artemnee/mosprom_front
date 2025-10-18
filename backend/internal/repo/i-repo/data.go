@@ -9,6 +9,7 @@ import (
 type IdbData interface {
 	IUser
 	ICompany
+	ICommunity
 }
 
 type IUser interface {
@@ -20,4 +21,11 @@ type IUser interface {
 type ICompany interface {
 	CreateCompany(company dao.Company) (*dao.Company, error)
 	GetCompanyList(limit, offset int) (dto.PaginationResponse, error)
+	GetCompanyById(id uuid.UUID) (*dao.Company, error)
+}
+
+type ICommunity interface {
+	CreateCommunity(community dao.Community) (*dao.Community, error)
+	GetCommunityList(limit, offset int, companyId uuid.UUID) (*dto.PaginationResponse, error)
+	GetCommunity(uuid, companyId uuid.UUID) (*dao.Community, error)
 }

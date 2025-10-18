@@ -1,16 +1,22 @@
 package serv
 
 func (h *Http) UserNoAuth() {
-	user := h.app.Group("/api/user")
-
-	//client.Get("/all/", io.controller.AllClient)
+	user := h.apiGroup.Group("/user")
 	user.Post("/", h.controller.CreateUser)
 	user.Post("/login/", h.controller.UserLogin)
 }
 
 func (h *Http) Company() {
-	company := h.app.Group("/api/auth/company")
+	h.authGroup.Post("/companies", h.controller.CreateCompany)
+	h.authGroup.Get("/companies", h.controller.GetCompanyList)
 
-	company.Post("/", h.controller.CreateCompany)
-	company.Get("/", h.controller.GetCompanyList)
+	h.companyGroup.Get("/", h.controller.GetCompany)
+}
+
+func (h *Http) Community() {
+	communities := h.companyGroup.Group("/communities")
+	communities.Post("/", h.controller.CreateCommunity)
+	communities.Get("/", h.controller.GetCommunityList)
+
+	h.communityGroup.Get("/", h.controller.GetCommunity)
 }
