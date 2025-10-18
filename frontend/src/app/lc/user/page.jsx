@@ -1,5 +1,6 @@
 "use client";
 
+import { CakeSlice } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CommunityDetail from "@/components/CommunityDetail";
@@ -30,14 +31,7 @@ function AchievementItem({ achievement }) {
   return (
     <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200">
       <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-        <img
-          src="/mem.jpg"
-          alt=""
-          width="48"
-          height="48"
-          loading="lazy"
-          className="rounded-full"
-        />
+        <CakeSlice />
       </div>
       <div className="flex-1">
         <h4 className="text-gray-900 font-medium">{achievement.title}</h4>
