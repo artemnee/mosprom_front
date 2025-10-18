@@ -27,7 +27,8 @@
         "noSvgWithoutTitle": "off",
         "useButtonType": "off",
         "noStaticElementInteractions": "off",
-        "useKeyWithClickEvents": "off"
+        "useKeyWithClickEvents": "off",
+        "noLabelWithoutControl": "off"
       }
     },
     "domains": {

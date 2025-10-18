@@ -21,7 +21,7 @@ export default function EnterpriseDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex pb-16 lg:pb-0">
+    <div className="min-h-screen flex pb-16 lg:pb-0">
       <Sidebar
         isOpen={sidebarOpen}
         activeSection={activeSection}
@@ -43,8 +43,8 @@ export default function EnterpriseDashboard() {
           menuItems={menuItems}
         />
 
-        <main className="flex-1 overflow-y-auto">
-          <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8">
+        <main className="flex-1 overflow-y-auto md:rounded-tl-xl  bg-gray-100/90">
+          <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8 ">
             {activeSection === "dashboard" ? (
               <DashboardContent stats={stats} recentActivity={recentActivity} />
             ) : activeSection === "community" ? (

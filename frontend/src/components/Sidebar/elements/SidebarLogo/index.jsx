@@ -1,6 +1,6 @@
 const SidebarLogo = ({ isOpen }) => {
   return (
-    <div className="h-16 flex items-center px-4 border-b border-gray-200">
+    <div className="h-16 flex items-center px-4 ">
       {isOpen ? (
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">

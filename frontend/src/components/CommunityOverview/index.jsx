@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ModalForm from "@/components/ModalForm";
+
 const CommunityOverview = ({ onSelectCommunity }) => {
   const communities = [
     {
@@ -8,7 +11,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       members: 342,
       projects: 8,
       events: 3,
-      color: "from-blue-200 to-cyan-200",
+      color: "from-neutral-200 to-cyan-100",
     },
     {
       id: 2,
@@ -18,7 +21,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       members: 218,
       projects: 5,
       events: 2,
-      color: "from-purple-200 to-pink-200",
+      color: "from-neutral-200 to-pink-100",
     },
     {
       id: 3,
@@ -27,7 +30,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       members: 156,
       projects: 12,
       events: 4,
-      color: "from-orange-200 to-red-200",
+      color: "from-neutral-200 to-red-200",
     },
     {
       id: 4,
@@ -36,13 +39,25 @@ const CommunityOverview = ({ onSelectCommunity }) => {
       members: 94,
       projects: 3,
       events: 1,
-      color: "from-green-200 to-emerald-200",
+      color: "from-neutral-200 to-emerald-200",
     },
   ];
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const handleCreate = (type) => {
+    setModalType(type);
+    setIsModalOpen(true);
+  };
+
+  const handleSubmit = (data) => {
+    console.log("Новая сущность:", data, "Тип:", modalType);
+  };
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row gap-2 items-start justify-between mb-6">
         <div>
           <h2 className="text-2xl font-semibold text-gray-900">
             Ваши сообщества
@@ -51,7 +66,10 @@ const CommunityOverview = ({ onSelectCommunity }) => {
             Управляйте сообществами вашего предприятия
           </p>
         </div>
-        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2">
+        <button
+          onClick={() => handleCreate("community")}
+          className="px-4 w-full md:w-max justify-center py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+        >
           <svg
             className="w-5 h-5"
             fill="none"
@@ -74,7 +92,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
           <div
             key={community.id}
             onClick={() => onSelectCommunity(community)}
-            className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all cursor-pointer group"
+            className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all cursor-pointer group"
           >
             <div
               className={`h-32 bg-gradient-to-br ${community.color} p-6 flex items-center justify-center`}
@@ -84,7 +102,7 @@ const CommunityOverview = ({ onSelectCommunity }) => {
               </div>
             </div>
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 transition-colors">
                 {community.name}
               </h3>
               <p className="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -144,6 +162,12 @@ const CommunityOverview = ({ onSelectCommunity }) => {
           </div>
         ))}
       </div>
+      <ModalForm
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        type={modalType}
+        onSubmit={handleSubmit}
+      />
     </div>
   );
 };

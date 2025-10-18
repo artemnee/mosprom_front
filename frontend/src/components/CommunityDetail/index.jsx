@@ -32,7 +32,6 @@ const CommunityDetail = ({ community, onBack }) => {
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-6">
         <button
           onClick={onBack}
@@ -54,7 +53,7 @@ const CommunityDetail = ({ community, onBack }) => {
           Назад к сообществам
         </button>
 
-        <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl overflow-hidden">
           <div
             className={`h-48 bg-gradient-to-br ${community.color} p-8 flex items-center justify-center relative`}
           >
@@ -92,10 +91,8 @@ const CommunityDetail = ({ community, onBack }) => {
         </div>
       </div>
 
-      {/* Projects and Events */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Projects */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Проекты</h2>
             <button className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm font-medium rounded-lg transition-colors">
@@ -141,8 +138,7 @@ const CommunityDetail = ({ community, onBack }) => {
           </div>
         </div>
 
-        {/* Events */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Мероприятия</h2>
             <button className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm font-medium rounded-lg transition-colors">

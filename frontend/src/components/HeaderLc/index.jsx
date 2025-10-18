@@ -1,6 +1,6 @@
 const HeaderLc = ({ onToggleSidebar, activeSection, menuItems }) => {
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4 lg:px-6">
+    <header className="h-16 bg-white flex items-center px-4 lg:px-6">
       <button
         onClick={onToggleSidebar}
         className="hidden lg:block p-2 hover:bg-gray-100 rounded-lg transition-colors mr-4"
@@ -25,10 +25,6 @@ const HeaderLc = ({ onToggleSidebar, activeSection, menuItems }) => {
           {menuItems.find((item) => item.id === activeSection)?.label}
         </h1>
       </div>
-
-      <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
-        Создать
-      </button>
     </header>
   );
 };

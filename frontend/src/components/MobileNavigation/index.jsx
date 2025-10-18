@@ -1,6 +1,6 @@
 const MobileNavigation = ({ menuItems, activeSection, onSectionChange }) => {
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md z-40">
       <div
         className="flex overflow-x-auto scrollbar-hide"
         style={{ scrollBarWidth: "none" }}
@@ -26,9 +26,6 @@ const MobileNavigation = ({ menuItems, activeSection, onSectionChange }) => {
                 d={item.icon}
               />
             </svg>
-            <span className="text-xs font-medium truncate w-full text-center">
-              {item.label}
-            </span>
           </button>
         ))}
       </div>
