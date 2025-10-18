@@ -33,7 +33,7 @@ const DashboardContent = ({ stats, recentActivity }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-xl">
+          <div className="bg-blue-200/20 rounded-xl">
             <div className="p-6">
               <h2 className="text-lg font-semibold text-gray-900">
                 Последняя активность
@@ -50,7 +50,7 @@ const DashboardContent = ({ stats, recentActivity }) => {
         </div>
 
         <div className="space-y-6">
-          <div className="bg-white rounded-xl p-6">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <h3 className="text-gray-900 font-semibold mb-4">Сегодня</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">

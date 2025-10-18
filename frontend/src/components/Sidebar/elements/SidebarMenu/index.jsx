@@ -6,10 +6,10 @@ const SidebarMenu = ({ items, activeSection, onSectionChange, isOpen }) => {
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5  cursor-pointer rounded-lg transition-colors ${
               activeSection === item.id
-                ? "bg-blue-50 text-blue-600"
-                : "text-gray-700 hover:bg-gray-100"
+                ? ""
+                : "text-gray-700 bg-white hover:bg-blue-200/50"
             }`}
           >
             <svg

@@ -50,30 +50,34 @@ function FeedContent({ feedItems }) {
           value={12}
           trend="+2 за неделю"
           trendColor="green"
+          variant="sub"
         />
         <StatsCard
           label="Уровень"
           value={7}
           trend="Прогресс: 65%"
           trendColor="blue"
+          variant="level"
         />
         <StatsCard
           label="Часы обучения"
           value={45}
           trend="8 часов на этой неделе"
           trendColor="orange"
+          variant="hours"
         />
         <StatsCard
           label="Ачивки"
           value={15}
           trend="3 новые"
           trendColor="purple"
+          variant="cup"
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-xl">
+          <div className="bg-blue-200/30 rounded-xl">
             <div className="p-6 border-b border-gray-200">
               <h2 className="text-lg font-semibold text-gray-900">
                 Лента активностей
@@ -304,11 +308,6 @@ export default function UserDashboard() {
       icon: "M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z",
     },
     {
-      id: "community",
-      label: "Сообщества",
-      icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
-    },
-    {
       id: "learning",
       label: "Обучение",
       icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
@@ -322,6 +321,8 @@ export default function UserDashboard() {
         activeSection={activeSection}
         onSectionChange={handleSectionChange}
         menuItems={menuItems}
+        onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+        isUser={true}
       />
 
       <MobileNavigation
@@ -331,14 +332,7 @@ export default function UserDashboard() {
       />
 
       <div className="flex-1 flex flex-col min-w-0">
-        <HeaderLc
-          sidebarOpen={sidebarOpen}
-          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-          activeSection={activeSection}
-          menuItems={menuItems}
-        />
-
-        <main className="flex-1 overflow-y-auto bg-gray-100 md:rounded-tl-xl">
+        <main className="flex-1 shadow overflow-y-auto bg-white rounded-xl m-1 md:m-4">
           <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8 ">
             {activeSection === "feed" ? (
               <FeedContent feedItems={feedItems} />

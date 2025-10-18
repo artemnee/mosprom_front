@@ -55,7 +55,7 @@ const CommunityDetail = ({ community, onBack }) => {
 
         <div className="bg-white rounded-2xl overflow-hidden">
           <div
-            className={`h-48 bg-gradient-to-br ${community.color} p-8 flex items-center justify-center relative`}
+            className={`h-48 bg-gradient-to-br from-cyan-50 to-blue-200 p-8 flex items-center justify-center relative`}
           >
             <div className="text-8xl">{community.logo}</div>
             <button className="absolute top-4 right-4 px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white text-sm font-medium rounded-lg transition-colors border border-white/30">
@@ -64,7 +64,7 @@ const CommunityDetail = ({ community, onBack }) => {
           </div>
           <div className="p-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
-              {community.name}
+              {community.title}
             </h1>
             <p className="text-gray-600 mb-6">{community.description}</p>
             <div className="flex items-center gap-6">

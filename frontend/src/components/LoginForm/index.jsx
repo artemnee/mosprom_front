@@ -41,7 +41,7 @@ const LoginForm = () => {
       console.log(res);
 
       if (!res.error) {
-        await router.push("/lc/user");
+        await router.push("/lc");
       }
     } catch (e) {
       console.log(e);

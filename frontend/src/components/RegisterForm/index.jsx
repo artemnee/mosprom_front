@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const RegisterForm = () => {
+const RegisterForm = ({ isCompany = false }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [registrationType, setRegistrationType] = useState("user");
+  const [registrationType, setRegistrationType] = useState(
+    isCompany ? "company" : "user",
+  );
 
   const router = useRouter();
 
@@ -61,6 +63,8 @@ const RegisterForm = () => {
         body: JSON.stringify(userFormData),
       });
       console.log(await res.json());
+
+      router.push("/login");
     } catch (e) {
       console.log(e);
     }
@@ -107,37 +111,6 @@ const RegisterForm = () => {
 
   return (
     <div>
-      <div className="flex gap-2 mb-6 p-1 bg-slate-100 rounded-xl">
-        <button
-          type="button"
-          onClick={() => {
-            setRegistrationType("user");
-            setError("");
-          }}
-          className={`flex-1 px-4 py-2.5 rounded-lg font-medium transition-all ${
-            registrationType === "user"
-              ? "bg-white text-sky-600 shadow-sm"
-              : "text-slate-600 hover:text-slate-900"
-          }`}
-        >
-          Пользователь
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setRegistrationType("company");
-            setError("");
-          }}
-          className={`flex-1 px-4 py-2.5 rounded-lg font-medium transition-all ${
-            registrationType === "company"
-              ? "bg-white text-sky-600 shadow-sm"
-              : "text-slate-600 hover:text-slate-900"
-          }`}
-        >
-          Компания
-        </button>
-      </div>
-
       {registrationType === "user" && (
         <form onSubmit={onSubmitUser} className="space-y-5">
           {error && (

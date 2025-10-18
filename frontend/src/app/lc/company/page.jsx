@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import CommunityDetail from "@/components/CommunityDetail";
 import CommunityOverview from "@/components/CommunityOverview";
 import DashboardContent from "@/components/DashboardContent";
@@ -10,12 +10,25 @@ import MobileNavigation from "@/components/MobileNavigation";
 import Sidebar from "@/components/Sidebar";
 import EmptyState from "@/components/ui/EmptyState";
 import { menuItems, recentActivity, stats } from "@/config/mockData/lcData";
+import { useAuth } from "@/context/authContext";
 
 export default function EnterpriseDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("dashboard");
   const [selectedCommunity, setSelectedCommunity] = useState(null);
-  const pathname = usePathname();
+
+  const { token, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !token) {
+      router.push("/login");
+    }
+  }, [loading, token, router]);
+
+  if (loading || !token) {
+    return <div>Загрузка...</div>;
+  }
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
@@ -29,6 +42,8 @@ export default function EnterpriseDashboard() {
         activeSection={activeSection}
         onSectionChange={handleSectionChange}
         menuItems={menuItems}
+        onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+        isUser={false}
       />
 
       <MobileNavigation
@@ -38,15 +53,7 @@ export default function EnterpriseDashboard() {
       />
 
       <div className="flex-1 flex flex-col min-w-0">
-        <HeaderLc
-          sidebarOpen={sidebarOpen}
-          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-          activeSection={activeSection}
-          menuItems={menuItems}
-          pathname={pathname}
-        />
-
-        <main className="flex-1 overflow-y-auto md:rounded-tl-xl  bg-gray-100/90">
+        <main className="flex-1 shadow overflow-y-auto bg-white rounded-xl m-1 md:m-4">
           <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8 ">
             {activeSection === "dashboard" ? (
               <DashboardContent stats={stats} recentActivity={recentActivity} />

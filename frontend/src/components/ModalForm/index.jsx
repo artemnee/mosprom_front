@@ -1,9 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
+const ModalForm = ({ isOpen, onClose, type, onSubmit, setPr }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -32,8 +31,9 @@ const ModalForm = ({ isOpen, onClose, type, onSubmit }) => {
         body: JSON.stringify(formData),
       },
     );
+    const json = await res.json();
 
-    console.log(await res.json());
+    console.log(json);
   };
 
   const renderFields = () => {
