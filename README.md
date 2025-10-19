@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">🚀Приложение-конструктор для молодёжных сообществ и клубов предприятий
+</h1>
 
-## Getting Started
+<p align="center">
+  <b>Модульная экосистема для создания и управления молодёжными сообществами, клубами и проектами предприятий</b>
+</p>
 
-First, run the development server:
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Go-1.24-00ADD8?logo=go&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-4-38B2AC?logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/MinIO-cloud%20storage-D52B1E?logo=minio&logoColor=white" />
+  <img src="https://img.shields.io/badge/Elasticsearch-search%20engine-005571?logo=elasticsearch&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-green" />
+</p>
 
+---
+
+## ✨ Основные возможности
+
+### 🔐 Авторизация и профиль пользователя
+- Безопасная авторизация и хранение сессий.
+- Личный кабинет с персональной статистикой.
+- Просмотр достижений (ачивок) и текущего уровня.
+- Отображение информации по активным сообществам.
+
+### 🏢 Воркфлоу предприятий и сообществ
+- Конструктор организаций и внутренних клубов.
+- Управление мероприятиями, проектами и образовательными материалами.
+- Добавление вакансий, стажировок и производственных кейсов.
+- Просмотр участников, ролей и их активности.
+
+### 🧭 Личный кабинет предприятия
+- Разделы: контент, участники, аналитика, настройки.
+- Гибкая система карточек и таблиц в стиле Bento Grid.
+- Возможность создания статей, постов и событий.
+- Современный, адаптивный интерфейс.
+
+---
+
+## 🧩 Технологический стек
+
+- ⚡ **Next.js** 
+- 🐹 **Go (Golang)** 
+- ☁️ **MinIO**
+- 🔍 **Elasticsearch** 
+- 🎨 **Tailwind CSS** 
+
+---
+
+## 🛠️ Установка и запуск локально
+
+### 📦 Клонирование репозитория
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/enterprise-platform.git
+cd enterprise-platform
+```
+⚙️ Запуск бэкенда
+```bash
+cd backend
+docker-compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+После запуска будут доступны:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🧩 API (Go) → http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+💻 Запуск фронтенда
+```bash
+cd frontend
+yarn install
+yarn dev
+```
+Интерфейс будет доступен по адресу:
+👉 http://localhost:3000
 
-## Learn More
+# Страницы
 
-To learn more about Next.js, take a look at the following resources:
+http://localhost/login
+http://localhost/reg
+http://localhost/lc
+http://localhost/lc/company
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 📱 Особенности интерфейса
+Современный минималистичный дизайн.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Полностью адаптивная верстка (Desktop / Tablet / Mobile).
 
-## Deploy on Vercel
+Удобная навигация и интуитивный UX.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Разделение логики, API и компонентов.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Легкая интеграция новых модулей.
+
+
+<p align="center"> 💡 <i>Создано в рамках проведения хакатона ОТКРОЙ#МОСПРОМ
+</i> </p> ```
