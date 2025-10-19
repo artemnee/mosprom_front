@@ -72,14 +72,14 @@ yarn install
 yarn dev
 ```
 Интерфейс будет доступен по адресу:
-👉 http://localhost:3000
+👉 http://localhost:1111
 
 # Страницы
 
-http://localhost/login
-http://localhost/reg
-http://localhost/lc
-http://localhost/lc/company
+http://localhost:1111/login
+http://localhost:1111/reg
+http://localhost:1111/lc
+http://localhost:1111/lc/company
 
 # 📱 Особенности интерфейса
 Современный минималистичный дизайн.
