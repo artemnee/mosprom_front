@@ -7,10 +7,11 @@ import (
 )
 
 type Bl struct {
-	User      *User
-	Company   *Company
-	Community *Community
-	Cfg       *config.Config
+	User        *User
+	Company     *Company
+	Community   *Community
+	Achievement *Achievement
+	Cfg         *config.Config
 }
 
 func New(repo *repo.Repo) *Bl {
@@ -21,6 +22,7 @@ func New(repo *repo.Repo) *Bl {
 		NewUser(repo.DbData, repo.Config),
 		NewCompany(repo.DbData),
 		NewCommunity(repo.DbData),
+		NewAchievement(repo.DbData),
 		repo.Config,
 	}
 }
